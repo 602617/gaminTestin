@@ -1,0 +1,19 @@
+
+
+.card {
+    border-radius: 12px; /* Rounded corners */
+}
+
+.card-header {
+    font-size: 18px;
+    border-top-left-radius: 12px; /* Keep the top corners rounded */
+    border-top-right-radius: 12px;
+}
+
+.card-title {
+    font-size: 16px;
+}
+
+.card-text {
+    font-size: 14px;
+}
