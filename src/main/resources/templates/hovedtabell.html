@@ -2,44 +2,40 @@
 <body>
 <main class="main-default">
 
-<!--  <table class="table">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--      <th>Game Name</th>-->
-<!--      <th>Title</th>-->
-<!--      <th>Date</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr th:each="post : ${posts}">-->
-<!--      <td th:text="${post.gameName}"></td>-->
-<!--      <td th:text="${post.title}"></td>-->
-<!--      <td th:text="${post.dato}"></td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--  </table>-->
 
-<!--  <div class="card" th:each="post : ${posts}">-->
-<!--    <div class="card-header" th:text="${post.gameName}"></div>-->
-<!--    <div class="card-body">-->
-<!--      <h5 class="card-title" th:text="${post.title}"></h5>-->
-<!--      <p class="card-text" th:text="${post.dato}"></p>-->
-<!--    </div>-->
-<!--  </div>-->
 
-  <div class="container mt-3" th:each="post : ${posts}">
+  <div class="container mt-3" th:each="post : ${posts}" th:id="${'post-' + post.id}">
     <div class="card shadow-sm text-center">
-      <div class="card-header bg-primary text-white">Brukernavn</div>
+      <div class="card-header bg-primary text-white">
+        Brukernavn
+        <form th:action="@{/delete-post}" method="post" style="display: inline;">
+          <input type="hidden" th:value="${post.id}" name="id"/>
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
       <div class="card-body">
         <h5 class="card-title" th:text="${post.gameName}">COD</h5>
         <h5 class="card-title" th:text="${post.title}">Gaming?</h5>
         <p class="card-text" th:text="${post.dato}">Klokkå 8?</p>
+
+<!--        voting-->
+<!--        <div class="voting-area">-->
+<!--          &lt;!&ndash; Yes Button &ndash;&gt;-->
+<!--          <button class="btn btn-success vote-btn" th:data-id="${post.id}" th:data-vote="yes">Yes</button>-->
+<!--          <span th:text="${post.yesCount} ?: '0'">0</span> Votes-->
+
+<!--          &lt;!&ndash; No Button &ndash;&gt;-->
+<!--          <button class="btn btn-danger vote-btn" th:data-id="${post.id}" th:data-vote="no">No</button>-->
+<!--          <span th:text="${post.noCount} ?: '0'">0</span> Votes-->
+<!--        </div>-->
       </div>
     </div>
   </div>
 
-
-  <a th:href="@{/}">Back</a>
+<div class="container mt-3">
+  <a th:href="@{/}" class="btn btn-primary me-2">Back</a>
+  <a th:href="@{/leggtil}" class="btn btn-primary me-2">Legg til ny</a>
+</div>
 
 </main>
 </body>

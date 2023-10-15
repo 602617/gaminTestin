@@ -1,0 +1,29 @@
+<html th:insert="~{layout/common :: common(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main class="main-default py-5">
+
+  <div>
+    <p>legg til</p>
+  </div>
+
+  <form method="post" action="/leggtil">
+    <label for="gameName">Spill navn: </label>
+    <input type="text" id="gameName" name="gameName" required><br><br>
+
+    <label for="title">Tittel: </label>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="dato">Dato: </label>
+    <input type="text" id="dato" name="dato" required><br><br>
+
+    <input type="submit" value="Legg til">
+    <a href="/hovedtabell">Tilbake</a>
+  </form>
+
+  <a th:href="@{/hovedtabell}" class="btn btn-primary me-2">Back</a>
+
+
+  </main>
+</body>
+</html>
